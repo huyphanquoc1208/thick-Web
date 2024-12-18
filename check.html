@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Viên</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/Testontap.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btnDk').click(function() {
+                $('#myModal').modal('show');
+            });
+            $('#close').click(function() {
+                $('#myModal').modal('hide');
+            });
+        });
+
+        var i = 1;
+
+        function Luu() {
+            var ht = document.getElementById("txtHt").value;
+            var gt = document.querySelector("input[name='gioitinh']:checked")?.value;
+            var nn = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(ch => ch.value);
+            var sdt = document.getElementById("txtsdt").value;
+            var ns = document.getElementById("txtns").value;
+            var dc = document.getElementById("txtdc").value;
+            var hp = document.getElementById("lstkh").value;
+            var kh = document.getElementById("lstkh").options[document.getElementById("lstkh").selectedIndex].text;
+
+            var tbl = document.getElementById("tblds");
+            var row1 = tbl.insertRow(i++);
+            row1.insertCell(0).innerHTML = i;
+            row1.insertCell(1).innerHTML = ht;
+            row1.insertCell(2).innerHTML = gt;
+            row1.insertCell(3).innerHTML = nn.join(", ");
+            row1.insertCell(4).innerHTML = sdt;
+            row1.insertCell(5).innerHTML = ns;
+            row1.insertCell(6).innerHTML = dc;
+            row1.insertCell(7).innerHTML = kh;
+            row1.insertCell(8).innerHTML = hp;
+        }
+
+        function Chonkh() {
+            var hp = document.getElementById("lstkh").value;
+            document.getElementById("txthp").value = hp;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="../img/logo.PNG" alt="Logo">
+        </header>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="#">Trang Chủ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="btnDk">Đăng Ký</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="table-responsive">
+                <h1>Danh Sách Thành Viên</h1>
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Họ Tên</th>
+                            <th scope="col">Giới Tính</th>
+                            <th scope="col">Ngôn Ngữ</th>
+                            <th scope="col">Số Điện Thoại</th>
+                            <th scope="col">Ngày Sinh</th>
+                            <th scope="col">Địa Chỉ</th>
+                            <th scope="col">Khóa Học</th>
+                            <th scope="col">Học Phí</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblds">
+                        <tr>
+                            <td>1</td>
+                            <td>PVB</td>
+                            <td>Nam</td>
+                            <td>Tiếng Việt</td>
+                            <td>0123456789</td>
+                            <td>12/08/2003</td>
+                            <td>Q12</td>
+                            <td>K17</td>
+                            <td>4000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer>
+            <h5>MSSV: 21078701 - Họ Tên: Phan Quốc Huy - Lớp: ĐHKHMT17ATT</h5>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thông Tin Học Viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-control">
+                        <div class="mb-3 row">
+                            <label for="txtMa" class="col-4 col-form-label">Mã Học Viên:</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="txtMa" placeholder="Mã học viên">
+                            </div>
+                            <div class="col-2"><span id="tbMa"> *</span></div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtHt" class="col-4 col-form-label">Họ Tên:</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="txtHt" placeholder="Nhập họ tên">
+                            </div>
+                            <div class="col-2"><span id="tbHt"> *</span></div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-4 col-form-label">Giới Tính:</label>
+                            <div class="col-8">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gioitinh" value="Nam">
+                                    <label class="form-check-label">Nam</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gioitinh" value="Nữ">
+                                    <label class="form-check-label">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-4 col-form-label">Ngôn Ngữ:</label>
+                            <div class="col-8">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="English">
+                                    <label class="form-check-label">Tiếng Anh</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="French">
+                                    <label class="form-check-label">Tiếng Pháp</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="Chinese">
+                                    <label class="form-check-label">Tiếng Trung</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtsdt" class="col-4 col-form-label">Số Điện Thoại:</label>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="txtsdt">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtns" class="col-4 col-form-label">Ngày Sinh:</label>
+                            <div class="col-8">
+                                <input type="date" class="form-control" id="txtns">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtdc" class="col-4 col-form-label">Địa Chỉ:</label>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="txtdc">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="lstkh" class="col-4 col-form-label">Khóa Học:</label>
+                            <div class="col-8">
+                                <select class="form-select" id="lstkh" onchange="Chonkh()">
+                                    <option value="5000000">2 tuần</option>
+                                    <option value="8000000">4 tuần</option>
+                                    <option value="9000000">6 tuần</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txthp" class="col-4 col-form-label">Học Phí:</label>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="txthp" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-12 d-grid">
+                                <button type="button" class="btn btn-success" onclick="Luu()">Lưu</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
